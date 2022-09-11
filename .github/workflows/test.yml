@@ -41,7 +41,7 @@ jobs:
         run: npm run lint -- --cache --quiet --no-fix
 
   unit-test:
-    name: Tests
+    name: Unit Tests
     needs: [npm-dependencies]
     runs-on: ubuntu-latest
     timeout-minutes: 5
@@ -54,8 +54,25 @@ jobs:
       - name: Install npm dependencies
         uses: 'bahmutov/npm-install@v1'
 
-      - name: Run tests
+      - name: Run unit tests
         run: npm run test
+
+  e2e-test:
+    name: E2E Tests
+    needs: [npm-dependencies]
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 1
+
+      - name: Install npm dependencies
+        uses: 'bahmutov/npm-install@v1'
+
+      - name: Run E2E tests
+        run: npm run test:e2e
 
   build:
     name: Build
