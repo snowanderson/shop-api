@@ -1,13 +1,11 @@
 import { Controller, UseGuards, Request, Post } from '@nestjs/common';
 import { LocalAuthGuard } from './guards/local-auth.guard';
 import { AuthService, PasswordLessUser } from './auth.service';
-import { Public } from './decorators/public.decorator';
 import { LoginResponse } from './dto/login.response';
 import { ApiBody, ApiOkResponse, ApiOperation } from '@nestjs/swagger';
 import { LoginBody } from './dto/login.body';
 import { ApiInvalidCredentials } from './decorators/api-invalid-credentials.decorator';
 
-@Public()
 @Controller('auth')
 export class AuthController {
   constructor(private readonly authService: AuthService) {}
@@ -21,7 +19,7 @@ export class AuthController {
   @ApiInvalidCredentials()
   @ApiBody({ type: LoginBody })
   @UseGuards(LocalAuthGuard)
-  async login(@Request() req: PasswordLessUser): Promise<LoginResponse> {
-    return this.authService.login(req);
+  async login(@Request() req): Promise<LoginResponse> {
+    return this.authService.login(req.user);
   }
 }

@@ -12,6 +12,7 @@ model categories {
   index       Int?
   label       String
   description String?
+  products    products[]
 }
 
 model products {
@@ -19,6 +20,7 @@ model products {
   label                 String
   description           String?
   price                 Int
+  category              categories @relation(fields: [category_id], references: [id])
   category_id           Int
   thumbnail_url         String?
   visible_public        Int     @default(0)
