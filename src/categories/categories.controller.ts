@@ -1,12 +1,18 @@
 import { Controller, Get, Param, Request } from '@nestjs/common';
 import { CategoriesService } from './categories.service';
-import { ApiExtraModels, ApiOkResponse, ApiOperation } from '@nestjs/swagger';
+import {
+  ApiBearerAuth,
+  ApiExtraModels,
+  ApiOkResponse,
+  ApiOperation,
+} from '@nestjs/swagger';
 import { CategoryResponse } from './dto/category.response';
 import { ProductResponse } from './dto/product.response';
 import { CategoriesResponse } from './dto/categories.response';
 
 @Controller('categories')
 @ApiExtraModels(ProductResponse)
+@ApiBearerAuth('access-token')
 export class CategoriesController {
   constructor(private readonly categoriesService: CategoriesService) {}
 

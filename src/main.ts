@@ -1,7 +1,7 @@
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 import { PrismaService } from './prisma/prisma.service';
-import { INestApplication, ValidationPipe } from '@nestjs/common';
+import { INestApplication, Logger, ValidationPipe } from '@nestjs/common';
 import {
   DocumentBuilder,
   SwaggerDocumentOptions,
@@ -14,7 +14,18 @@ function setupSwagger(app: INestApplication) {
     .setTitle(pjson.name)
     .setDescription(pjson.description)
     .setVersion(pjson.version)
-    .addBearerAuth()
+    .addBearerAuth(
+      {
+        description:
+          'Please enter your token ("Bearer" word is already automatically added)',
+        name: 'Authorization',
+        bearerFormat: 'Bearer',
+        scheme: 'Bearer',
+        type: 'http',
+        in: 'Header',
+      },
+      'access-token',
+    )
     .build();
 
   // Removing "Controller" word from the operation id in Swagger
@@ -43,5 +54,6 @@ async function bootstrap() {
   const prismaService = app.get(PrismaService);
   await prismaService.enableShutdownHooks(app);
   await app.listen(3000);
+  Logger.log('Access Swagger documentation at http://localhost:3000');
 }
 bootstrap();
