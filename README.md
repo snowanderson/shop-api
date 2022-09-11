@@ -9,11 +9,11 @@
 # Install dependencies
 npm install
 
-# Generate the database
+# Generate and seed the database
 npm run prisma:migrate
 
-# Seed the data
-npm run prisma:seed
+# If needed, database and migrations can be reset
+npm run prisma:reset
 ```
 
 ## Running the app
