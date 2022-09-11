@@ -35,4 +35,5 @@ lerna-debug.log*
 !.vscode/extensions.json
 
 # Extra
+DATABASE.sqlite
 DATABASE.sqlite-journal
