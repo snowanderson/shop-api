@@ -6,31 +6,29 @@
 ## Installation
 
 ```bash
-$ npm install
+npm install
 ```
 
 ## Running the app
 
 ```bash
-# development
-$ npm run start
+npm run start
 
-# watch mode
-$ npm run start:dev
-
-# production mode
-$ npm run start:prod
+# Database can be browsed with:
+npm run prisma:studio
 ```
+
+Once started, the api and its swagger documentation are available at http://localhost:3000
 
 ## Test
 
 ```bash
 # unit tests
-$ npm run test
+npm run test
 
-# e2e tests
-$ npm run test:e2e
+# E2E tests
+npm run test:e2e
 
-# test coverage
-$ npm run test:cov
+# Linting
+npm run lint
 ```
