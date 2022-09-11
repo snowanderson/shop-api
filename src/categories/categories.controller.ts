@@ -21,7 +21,6 @@ export class CategoriesController {
     type: CategoriesResponse,
   })
   async findAll(@Request() request) {
-    console.log('user:', request.user);
     const categories = await this.categoriesService.categories(
       request.user ? 'authenticated' : 'public',
     );
