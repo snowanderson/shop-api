@@ -1,1 +1,26 @@
-[{"id":1,"name":"Jean-Michel","email":"jeanmichel@airweb.fr","password_hash":"99fa412e9b2201a01a0b9b0099b5dfe9"},{"id":2,"name":"Vincent","email":"vincent@airweb.fr","password_hash":"2e2e59aa850fe1f448485879941f05a7"},{"id":3,"name":"Samantha","email":"samantha@airweb.fr","password_hash":"723ca961d6d77ca199a577309d9582b5"},{"id":4,"name":"Simone","email":"simone@airweb.fr","password_hash":"cec0e9ff37e29dce63848809bee04375"}]
+[
+  {
+    "id": 1,
+    "name": "Jean-Michel",
+    "email": "jeanmichel@airweb.fr",
+    "password_hash": "99fa412e9b2201a01a0b9b0099b5dfe9"
+  },
+  {
+    "id": 2,
+    "name": "Vincent",
+    "email": "vincent@airweb.fr",
+    "password_hash": "2e2e59aa850fe1f448485879941f05a7"
+  },
+  {
+    "id": 3,
+    "name": "Samantha",
+    "email": "samantha@airweb.fr",
+    "password_hash": "723ca961d6d77ca199a577309d9582b5"
+  },
+  {
+    "id": 4,
+    "name": "Simone",
+    "email": "simone@airweb.fr",
+    "password_hash": "cec0e9ff37e29dce63848809bee04375"
+  }
+]
