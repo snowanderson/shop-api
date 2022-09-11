@@ -8,7 +8,7 @@ datasource db {
 }
 
 model categories {
-  id          Int     @id @unique(map: "sqlite_autoindex_categories_1") @default(autoincrement())
+  id          Int        @id @unique(map: "sqlite_autoindex_categories_1") @default(autoincrement())
   index       Int?
   label       String
   description String?
@@ -16,15 +16,16 @@ model categories {
 }
 
 model products {
-  id                    Int     @id @unique(map: "sqlite_autoindex_products_1") @default(autoincrement())
+  id                    Int               @id @unique(map: "sqlite_autoindex_products_1") @default(autoincrement())
   label                 String
   description           String?
   price                 Int
-  category              categories @relation(fields: [category_id], references: [id])
+  category              categories        @relation(fields: [category_id], references: [id])
   category_id           Int
   thumbnail_url         String?
-  visible_public        Int     @default(0)
-  visible_authenticated Int     @default(1)
+  visible_public        Int               @default(0)
+  visible_authenticated Int               @default(1)
+  carts                 productsInCarts[]
 }
 
 model users {
@@ -32,4 +33,23 @@ model users {
   name          String
   email         String @unique
   password_hash String
+  cart          carts[]
+}
+
+model productsInCarts {
+  product    products @relation(fields: [product_id], references: [id])
+  product_id Int
+  cart       carts    @relation(fields: [cart_id], references: [id])
+  cart_id    Int
+  quantity   Int
+
+  @@id([product_id, cart_id])
+}
+
+model carts {
+  id       Int               @id @unique(map: "sqlite_autoindex_carts_1") @default(autoincrement())
+  products productsInCarts[]
+  user    users @relation(fields: [user_id], references: [id])
+  user_id Int
+
 }

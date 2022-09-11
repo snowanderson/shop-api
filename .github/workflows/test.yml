@@ -54,6 +54,12 @@ jobs:
       - name: Install npm dependencies
         uses: 'bahmutov/npm-install@v1'
 
+      - name: Generate the database
+        run: npm run prisma:migrate
+
+      - name: Seed the database
+        run: npm run prisma:seed
+
       - name: Run unit tests
         run: npm run test
 
@@ -70,6 +76,12 @@ jobs:
 
       - name: Install npm dependencies
         uses: 'bahmutov/npm-install@v1'
+
+      - name: Generate the database
+        run: npm run prisma:migrate
+
+      - name: Seed the database
+        run: npm run prisma:seed
 
       - name: Run E2E tests
         run: npm run test:e2e

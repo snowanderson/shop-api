@@ -6,7 +6,14 @@
 ## Installation
 
 ```bash
+# Install dependencies
 npm install
+
+# Generate the database
+npm run prisma:migrate
+
+# Seed the data
+npm run prisma:seed
 ```
 
 ## Running the app
